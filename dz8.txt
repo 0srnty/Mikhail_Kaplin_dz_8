@@ -1,0 +1,12 @@
+3.
+SELECT
+  CASE WHEN count1 > count2 THEN 'm' ELSE 'f' END
+FROM
+(
+  SELECT
+    (SELECT COUNT(likes.user_id) FROM likes JOIN profiles WHERE likes.user_id = profiles.user_id and gender = "m") AS count1,
+    (SELECT COUNT(likes.user_id) FROM likes JOIN profiles WHERE likes.user_id = profiles.user_id and gender = "f") AS count2
+)
+  AS counts;
+4.
+select count(target_id) from likes join profiles where profiles.user_id order by birth desc limit 10;
